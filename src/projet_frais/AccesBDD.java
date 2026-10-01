@@ -62,20 +62,21 @@ public class AccesBDD {
        return result;
    }
    
-   public int ajoutClient(String nom,String prenom,String login,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
-       String sql="INSERT INTO visiteur (nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+   public int ajoutClient(String id, String nom,String prenom,String login,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
+       String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
        int rowsInserted = 0;
        try {
             
             PreparedStatement statement = connexion.prepareStatement(sql);
-            statement.setString(1, nom);
-            statement.setString(2, prenom);
-            statement.setString(3, login);
-            statement.setString(4, mdp);
-            statement.setString(5, adresse);
-            statement.setString(6, cp);
-            statement.setString(7, ville);
-            statement.setDate(8, dateEmbauche);
+            statement.setString(1, id);
+            statement.setString(2, nom);
+            statement.setString(3, prenom);
+            statement.setString(4, login);
+            statement.setString(5, mdp);
+            statement.setString(6, adresse);
+            statement.setString(7, cp);
+            statement.setString(8, ville);
+            statement.setDate(9, dateEmbauche);
             rowsInserted = statement.executeUpdate();
             return rowsInserted ;
         } catch (SQLException ex) {
