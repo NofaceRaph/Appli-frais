@@ -47,7 +47,7 @@ public class AccesBDD {
        return connexion;
    }
    
-   public ResultSet getLesClients(){
+   public ResultSet getlesVisiteurs(){
        ResultSet result = null;
        Statement statement;
        String sql = "SELECT * FROM visiteur";
@@ -62,7 +62,7 @@ public class AccesBDD {
        return result;
    }
    
-   public int ajoutClient(String id, String nom,String prenom,String login,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
+   public int ajoutVisiteur(String id, String nom,String prenom,String login,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
        String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
        int rowsInserted = 0;
        try {
@@ -83,6 +83,20 @@ public class AccesBDD {
             Logger.getLogger(AccesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
        return rowsInserted ;
+   }
+   
+   public int suprimLivre(String id){
+        String sql="DELETE FROM visiteur where id = ?";
+        int rowsSuppr = 0;
+        try {
+            PreparedStatement statement = connexion.prepareStatement(sql);
+            statement.setString(1, id);
+            rowsSuppr = statement.executeUpdate();
+            return rowsSuppr;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccesBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rowsSuppr;
    }
     
 }

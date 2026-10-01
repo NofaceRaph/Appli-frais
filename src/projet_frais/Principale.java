@@ -21,7 +21,7 @@ public class Principale {
         
         if (moi.getConnection() != null){
             System.out.println("Liste des Clients : ");
-            ResultSet result = moi.getLesClients();
+            ResultSet result = moi.getlesVisiteurs();
             if (!result.next()){
                 System.out.println("Aucun livre cheffe");
             }
@@ -35,6 +35,7 @@ public class Principale {
             }
         } 
     }
+    
 }
     
 
