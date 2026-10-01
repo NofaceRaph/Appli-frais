@@ -4,6 +4,8 @@
  */
 package projet_frais;
 
+import java.sql.*;
+
 /**
  *
  * @author tboyer
@@ -13,8 +15,26 @@ public class Principale {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws SQLException {
+        
+        AccesBDD moi = new AccesBDD();
+        
+        if (moi.getConnection() != null){
+            System.out.println("Liste des Clients : ");
+            ResultSet result = moi.getLesClients();
+            if (!result.next()){
+                System.out.println("Aucun livre cheffe");
+            }
+            else{
+                while (result.next()){
+                    String nom = result.getString(2);
+                    String prenom = result.getString(3);
+                    String login = result.getString(4);
+                    System.out.println(nom + " - " + prenom + " - " + login);
+                }
+            }
+        } 
     }
-    
 }
+    
+
