@@ -23,7 +23,7 @@ public class Principale {
             System.out.println("Liste des Clients : ");
             ResultSet result = moi.getlesVisiteurs();
             if (!result.next()){
-                System.out.println("Aucun livre cheffe");
+                System.out.println("Rien");
             }
             else{
                 while (result.next()){
@@ -33,9 +33,10 @@ public class Principale {
                     System.out.println(nom + " - " + prenom + " - " + login);
                 }
             }
+            moi.ajoutVisiteur("f26","Guy","Maupassant","lguy","h47ut","15 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
         } 
     }
-    
+        
 }
     
 
