@@ -33,7 +33,8 @@ public class Principale {
                     System.out.println(nom + " - " + prenom + " - " + login);
                 }
             }
-            moi.ajoutVisiteur("f26","Guy","Maupassant","lguy","h47ut","15 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
+            //moi.ajoutVisiteur("f26","Guy","Maupassant","lguy","h47ut","15 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
+            moi.ajoutTest("a6","Jean","Pierre","h47uf","14 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
         } 
     }
         
