@@ -20,10 +20,10 @@ public class Principale {
         AccesBDD moi = new AccesBDD();
         
         if (moi.getConnection() != null){
-            System.out.println("Liste des Clients : ");
+            System.out.println("Liste des Visiteurs : ");
             ResultSet result = moi.getlesVisiteurs();
             if (!result.next()){
-                System.out.println("Rien");
+                System.out.println("Aucun visiteurs disponible");
             }
             else{
                 while (result.next()){
