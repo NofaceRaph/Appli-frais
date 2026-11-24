@@ -27,31 +27,41 @@ public class Application extends javax.swing.JFrame {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnAjouter = new javax.swing.JButton();
+        btConsulter = new javax.swing.JButton();
+        recherche = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        list = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Ajouter");
-
-        jButton3.setText("Consulter");
-
-        jTextField1.setText("Recherche");
-        jTextField1.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jTextField1ComponentAdded(evt);
+        btnAjouter.setText("Ajouter");
+        btnAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterActionPerformed(evt);
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        btConsulter.setText("Consulter");
+        btConsulter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsulterActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+
+        recherche.setText("Recherche");
+        recherche.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                rechercheComponentAdded(evt);
+            }
+        });
+        recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechercheActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(list);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,12 +72,12 @@ public class Application extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 89, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(btConsulter)
                         .addGap(45, 45, 45)
-                        .addComponent(jButton1)
+                        .addComponent(btnAjouter)
                         .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1)
+                        .addComponent(recherche)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
@@ -77,22 +87,34 @@ public class Application extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(btnAjouter)
+                    .addComponent(btConsulter))
                 .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTextField1ComponentAdded
+    private void rechercheComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_rechercheComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ComponentAdded
+    }//GEN-LAST:event_rechercheComponentAdded
+
+    private void btConsulterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsulterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btConsulterActionPerformed
+
+    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterActionPerformed
+        btnAjouter = (btnAjouter) evt.getSource(ajouter.java);   //vers page ajouter   
+    }//GEN-LAST:event_btnAjouterActionPerformed
+
+    private void rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rechercheActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,11 +122,11 @@ public class Application extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JButton btConsulter;
+    private javax.swing.JButton btnAjouter;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> list;
+    private javax.swing.JTextField recherche;
     // End of variables declaration//GEN-END:variables
 }
