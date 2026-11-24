@@ -20,7 +20,7 @@ public class Principale {
         AccesBDD moi = new AccesBDD();
         
         if (moi.getConnection() != null){
-            System.out.println("Liste des Visiteurs : ");
+            /*System.out.println("Liste des Visiteurs : ");
             ResultSet result = moi.getlesVisiteurs();
             if (!result.next()){
                 System.out.println("Aucun visiteurs disponible");
@@ -32,9 +32,9 @@ public class Principale {
                     String login = result.getString(4);
                     System.out.println(nom + " - " + prenom + " - " + login);
                 }
-            }
-            //moi.ajoutVisiteur("f26","Guy","Maupassant","lguy","h47ut","15 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
-            moi.ajoutTest("a6","Jean","Pierre","h47uf","14 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
+            }*/
+            //moi.ajoutVisiteur("f26","Guy","Maupassant","h47ut","15 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
+            moi.ajoutTest("a6","Jean","Pierre","14 avenue de la paix","29000","Quimper",Date.valueOf("2000-02-15"));
         } 
     }
         
