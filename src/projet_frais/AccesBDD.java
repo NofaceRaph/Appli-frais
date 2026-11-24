@@ -67,7 +67,7 @@ public class AccesBDD {
    }
    
    // Ajoute un visiteur dans la BDD
-   public int ajoutVisiteur(String id, String nom,String prenom,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
+   public int ajoutVisiteur(String id, String nom,String prenom,String adresse,String cp,String ville,Date dateEmbauche){
        String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
        int rowsInserted = 0;
        try {
@@ -76,30 +76,7 @@ public class AccesBDD {
             statement.setString(1, id);
             statement.setString(2, nom);
             statement.setString(3, prenom);
-            statement.setString(4, prenom.substring(0,1).toLowerCase()+nom.toLowerCase());
-            statement.setString(5, mdp);
-            statement.setString(6, adresse);
-            statement.setString(7, cp);
-            statement.setString(8, ville);
-            statement.setDate(9, dateEmbauche);
-            rowsInserted = statement.executeUpdate();
-            return rowsInserted ;
-        } catch (SQLException ex) {
-            Logger.getLogger(AccesBDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       return rowsInserted ;
-   }
-   
-   public int ajoutTest(String id, String nom,String prenom,String adresse,String cp,String ville,Date dateEmbauche){
-       String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-       int rowsInserted = 0;
-       try {
-            
-            PreparedStatement statement = connexion.prepareStatement(sql);
-            statement.setString(1, id);
-            statement.setString(2, nom);
-            statement.setString(3, prenom);
-            statement.setString(4, prenom.substring(0,1).toLowerCase()+nom.toLowerCase());
+            statement.setString(4, genererLogin(prenom,nom));
             statement.setString(5, genererMDP().toString());
             statement.setString(6, adresse);
             statement.setString(7, cp);
@@ -113,6 +90,7 @@ public class AccesBDD {
        return rowsInserted ;
    }
    
+   // Génère un mot de passe aleatoire
    public StringBuilder genererMDP(){
        String c = "abcdefghijklmnopqrstuvwxyz0123456789";
        Random r = new Random();
@@ -123,4 +101,10 @@ public class AccesBDD {
        }
        return mdp;
    }
+   
+   public String genererLogin(String prenom, String nom){
+       String login = prenom.substring(0,1).toLowerCase()+nom.toLowerCase();
+       return login;
+   }
+   
 }
