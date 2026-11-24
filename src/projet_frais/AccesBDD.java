@@ -7,12 +7,14 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
+import java.util.*;
 
 
 public class AccesBDD {
     
     private Connection connexion;
     
+    //Connexion à la BDD
     public AccesBDD(){
     Properties config = new Properties();
         try (FileInputStream fichier =
@@ -48,6 +50,7 @@ public class AccesBDD {
        return connexion;
    }
    
+   // Sélectionne les visiteurs dans la BDD
    public ResultSet getlesVisiteurs(){
        ResultSet result = null;
        Statement statement;
@@ -63,8 +66,8 @@ public class AccesBDD {
        return result;
    }
    
+   // Ajoute un visiteur dans la BDD
    public int ajoutVisiteur(String id, String nom,String prenom,String mdp,String adresse,String cp,String ville,Date dateEmbauche){
-       String regex = "^[a-z0-9]";
        String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
        int rowsInserted = 0;
        try {
@@ -89,9 +92,6 @@ public class AccesBDD {
    
    public int ajoutTest(String id, String nom,String prenom,String adresse,String cp,String ville,Date dateEmbauche){
        String sql="INSERT INTO visiteur (id, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-       String regex = "abcdefghijklmnopqrstuvwxyz0123456789";
-       for(int i=0;i<5;i=i+1){
-       }
        int rowsInserted = 0;
        try {
             
@@ -100,7 +100,7 @@ public class AccesBDD {
             statement.setString(2, nom);
             statement.setString(3, prenom);
             statement.setString(4, prenom.substring(0,1).toLowerCase()+nom.toLowerCase());
-            statement.setString(5, regex);
+            statement.setString(5, genererMDP().toString());
             statement.setString(6, adresse);
             statement.setString(7, cp);
             statement.setString(8, ville);
@@ -111,5 +111,16 @@ public class AccesBDD {
             Logger.getLogger(AccesBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
        return rowsInserted ;
+   }
+   
+   public StringBuilder genererMDP(){
+       String c = "abcdefghijklmnopqrstuvwxyz0123456789";
+       Random r = new Random();
+       StringBuilder mdp = new StringBuilder();
+       for(int i=0;i<5;i=i+1){
+           int n = r.nextInt(1,37);
+           mdp.append(c.substring(n-1,n));
+       }
+       return mdp;
    }
 }
