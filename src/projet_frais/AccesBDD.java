@@ -101,7 +101,7 @@ public class AccesBDD {
        }
        return mdp;
    }
-   
+   // Génère un login aléatoire
    public String genererLogin(String prenom, String nom){
        String login = prenom.substring(0,1).toLowerCase()+nom.toLowerCase();
        return login;
